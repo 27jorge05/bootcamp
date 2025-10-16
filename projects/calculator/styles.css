@@ -36,6 +36,10 @@ body{
     background-color: #101820c5;
     text-align: right;
     margin-bottom: 12px;
+    transition: background-color 0.25s ease;
+}
+.screen.invalid{
+    background-color: #e63946;
 }
 .operation, .result{
     overflow-wrap: anywhere;

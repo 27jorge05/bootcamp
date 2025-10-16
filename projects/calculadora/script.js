@@ -80,10 +80,12 @@ function calculateExpression(value) {
   return Function(`"use strict"; return (${value})`)();
 }
 
+
+
 keysElement.addEventListener("click", (event) => {
   const button = event.target.closest("button");//joya
 
- 
+
 
   const value = button.dataset.value;
   const action = button.dataset.action;
