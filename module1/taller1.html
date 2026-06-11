@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>taller1</title>
+    <meta charset = "utf-8">
+    <meta name="keywords" content="html, css, wemaster">
+</head>
+<body>
+    <h1>
+    Jorge Luis
+    <br>
+    Chuquimia Parra
+    </h1>
+    <a href="#table"> Ir a la tabla1</a>
+    <br>
+    <a href="#curriculum"> Ir a la tabla2</a>
+    <p>
+        <em>I'm a fan of programing, hardware and software. Someone who his objetive is be better every day.</em>
+        <strong> ipsum dolor sit amet consectetur adipisicing elit.</strong> Voluptas, voluptate. Voluptas, voluptate. Voluptas, voluptate. Voluptas, voluptate. Voluptas, voluptate. Voluptas, voluptate. Voluptas, voluptate. Voluptas, voluptate. Voluptas, voluptate. Voluptas, voluptate
+
+    </p>
+    <h2>Programming laguage</h2>
+    <h3>
+        <ol>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ol>
+    </h3>
+
+    <h2>hobbies list</h2>
+    <h3>
+        <ul>
+            <li>reading</li>
+            <li>art martials</li>
+            <li>videogames</li>
+            <li>watching series</li>
+        </ou>
+    </h3>
+    <a href="https://www.facebook.com">facebook</a>
+    <a href="https://www.instagram.com/" target="_blank">
+        <img src="img/instagram.png">
+    </a>
+    <a href="mailto:luisparrachuquimia@gmail.com" target="_blank">
+        <h3>Enviar correo</h3>
+    </a>
+    
+    <table border="1" id="table">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+        </tr>
+        <tr>
+            <td>Jorge</td>
+            <td>Chuquimia</td>
+            <td>22</td>
+        </tr>
+    </table>
+    <a name="curriculum"></a>
+    <table border="2">
+        <caption>Curriculum Vitae</caption>
+        <tr>
+            <th>Educación</th>
+            <th>Experiencia</th>
+            <th rowspan="3" colspan="1" width="15px ">s
+                <br>
+            </th>
+        </tr>
+        <tr>
+            <td>Universidad Privada Boliviana</td>
+            <td>Practicante en el área de sistemas de la empresa Soboce</td>
+        </tr>
+        <tr>
+            <td colspan="2">    
+            <br>    
+            </td>
+        </tr>
+    </table>
+    <dl>
+    <dt>C++</dt>
+    <dd>Es un lenguaje de programación, diseñado a mediados de 
+    los años 1980, por Bjarne Stroustrup, como extensión del lenguaje 
+    de programación C.</dd>
+    <dt>Java</dt>
+    <dd>Es un lenguaje de programación orientado a objetos desarrollado 
+    por Sun Microsystems a principios de los 90.</dd>
+    <dt>JavaScript</dt>
+    <dd>Es un lenguaje interpretado, es decir, que no requiere compilación, 
+    utilizado principalmente en páginas web, con una sintaxis semejante a la 
+    del lenguaje C.</dd>
+  </dl>
+
+  <ol>
+  <li>Argentina
+    <ul>
+      <li><a href="http://www.lanacion.com.ar">La Nación</a></li>
+      <li><a href="http://www.clarin.com.ar">Clarín</a></li>
+      <li><a href="http://www.pagina12.com.ar">Página 12</a></li>
+    </ul>
+  </li>
+  <li>España
+    <ul>
+      <li><a href="http://www.elpais.es">El País Digital</a></li>
+      <li><a href="http://www.abc.es">ABC</a></li>
+      <li><a href="http://www.elmundo.es">El Mundo</a></li>
+    </ul>
+  </li>
+  <li>México
+    <ul>
+      <li><a href="http://www.jornada.unam.mx">La Jornada</a></li>
+      <li><a href="http://www.el-universal.com.mx">El Universal</a></li>
+    </ul>
+  </li>
+</ol>
+
+<form action="action.php" method="post" enctype="multipart/form-data">
+    <label for="nombre">Ingrese su nombre</label>
+    <input type="text" id="nombre" name="nombre">
+    <br>
+    <label for="apellido">Ingrese su apellido</label>
+    <input type="text" id="apellido" name="apellido">
+    <br>
+    <label for="email">Ingrese su correo electrónico</label>
+    <input type="email" id="email" name="email">
+    <br>        
+    <label for="mensaje">Ingrese su mensaje</label>
+    <input type="text" id="mensaje" name="mensaje">
+    <br>
+    <label for="password">Ingrese su contrase;a</label>
+    <input type="password" id="password" name="password">
+    <br>
+    <label for="comentario">    Deja tu comentario</label>
+    <br>
+    <textarea id="comentario" name="comentario" rows="4" cols="50"></textarea>
+
+    <br>
+    <input type="checkbox" id="suscribirse" name="suscribirse">
+    <label for="suscribirse"> suscribirse al boletín</label>
+    <br>
+    <label for="masculino">Masculino</label>
+    <input type="radio" name="sexo" id="masculino">
+    <label for="femenino">Femenino</label>
+    <input type="radio" name="sexo" id="femenino">
+
+    <br>
+    <input type="label" for="suscribirse">Suscribirse al boletín</input>
+    <br>
+    <label for="pais">Seleccione su país:</label>
+    <select name="pais" id="pais">
+        <optgroup label="Latinos">
+            <option value="1">Bolivia</option>
+            <option value="2">Argentina</option>
+            <option value="3">Perú</option>
+        </optgroup>
+        <optgroup label="Europeos">
+            <option value="4">España</option>
+            <option value="5">Francia</option>
+            <option value="6">Italia</option>
+
+        </optgroup>
+    </select>
+    <br>
+    <button type="submit">Enviar<img src="disquet.png" alt="s"></button>
+    <input type="submit" value="Enviar"><img src="disquet.png"></input>
+    <br>
+    <input type="reset" value="limpiar">
+    <input type="button" value="Click me" onclick="alert('Hola mundo')">
+    <br>
+    <input type="file" id="archivo" name="archivo" label="subir">
+</form>
+<br>
+s
+<form action="registrardatos.php" method="post">
+  <h1>Resultado:</h1>
+    
+  <input type="button" name="boton7" value=" 7 ">
+  <input type="button" name="boton8" value=" 8 ">
+  <input type="button" name="boton9" value=" 9 ">
+  <input type="button" name="botondiv" value=" / ">
+  <br>
+  <input type="button" name="boton4" value=" 4 ">
+  <input type="button" name="boton5" value=" 5 ">
+  <input type="button" name="boton6" value=" 6 ">
+  <input type="button" name="botonmul" value=" * ">
+  <br>
+  <input type="button" name="boton1" value=" 1 ">
+  <input type="button" name="boton2" value=" 2 ">
+  <input type="button" name="boton3" value=" 3 ">
+  <input type="button" name="botonmas" value=" + ">
+  <br>
+  <input type="button" name="boton0" value=" 0 ">
+  <input type="button" name="botonigual" value=" = ">
+  <input type="button" name="botonmenos" value=" - ">
+</form>
+
+ss
+
+
+<form action="registrardatos.php" method="post">
+    <fieldset>
+        <legend><em>Form1</em></legend>
+
+        <input type="hidden" value="10:20" name="hora">
+        ingrese su nombre:
+        <input type="text" name="nombre" size="10">
+    </fieldset>
+    
+    <input type="submit" value="Enviar">
+</form>
+<form action="registrardatos.php" method="post">
+  <fieldset>
+    <legend>Datos personales</legend>
+    Apellido y nombre:
+    <input type="text" name="nombre" size="30"><br>
+    Documento de identidad:
+    <input type="text" name="dni" size="8"><br>
+    Fecha de nacimiento:
+    <input type="text" name="fechanacimiento" size="12"><br>
+    Dirección:
+    <input type="text" name="direccionpersona" size="30"><br>
+  </fieldset>
+  <fieldset>
+    <legend>Datos Laborales</legend>
+    Nombre de la empresa:
+    <input type="text" name="nombreempresa" size="30"><br>
+    Actividad:
+    <input type="text" name="actividad" size="50"><br>
+    Dirección:
+    <input type="text" name="direccionempresa" size="30"><br>
+  </fieldset>
+  <input type="submit" value="Enviar">
+</form>
+
+<form action="registrardatos.php" method="post">
+<fieldset>
+
+    Apellido y nombre:
+    <input type="text" name="nombre" size="30"><br>
+    Es mayor de edad?:<br>
+    <input type="radio" name="radio1" checked 
+    value="si">Si<br>
+    <input type="radio" name="radio1" value="no">No<br>
+  Telefono:
+  <input type="text" value="453-" name="telefono" 
+  size="15"><br>
+  <textarea name="comentarios" rows="5" cols="40">Ingrese 
+  aqui sus comentarios</textarea><br>
+  <input type="submit" value="Enviar">
+  
+</fieldset>
+</form>
+
+<form action="registramascota.php" enctype="multipart/form-data">
+    <fieldset>
+        <legend>
+            <strong>
+
+            Mascota
+            </strong>
+        </legend>
+
+        <input type="file">sube foto de tu  mascota</input>
+        <br>
+    <label for="nombre" value="Nero">Nombre de tu mascota</label>
+    <input type="text" id="nombre" name="nombre" value="Nero">
+    <h3>sexo</h3>
+    <label for="macho">macho</label>
+    <input type="radio" id="macho" name="genero" checked>
+    <label for="hembra">hembra</label>
+    <input type="radio" id="hembra" name="genero">
+    
+    <select name="tipo" id="tipo" value="2">
+        
+        <optgroup label="domesticos">
+            <option value="1">perro</option>
+            <option value="2" selected >gato</option>
+            <option value="3">conejo</option>
+        </optgroup>
+        <optgroup label="granja">
+            <option value="4">vaca</option>
+            <option value="5">cerdo</option>
+            <option value="6">oveja</option>
+        </optgroup>
+        
+    </select>
+    <br>
+    <textarea name="comentarios" id="comentarios" rows="5" cols="25">El nero dice nero nero nero</textarea>
+    <br>
+</fieldset>
+</form>
+
+
+<form action="registrardatos.php" method="post">
+  <input type="text" name="text1" size="5" tabindex="1" value="1">
+  <input type="text" name="text2" size="5" tabindex="4" value="4">
+  <input type="text" name="text3" size="5" tabindex="7" value="7">
+  <input type="text" name="text3" size="5" tabindex="10" value="7">
+  <br>
+  <input type="text" name="text4" size="5" tabindex="2" value="2">
+  <input type="text" name="text5" size="5" tabindex="5" value="5">
+  <input type="text" name="text6" size="5" tabindex="8" value="8">
+  <br>
+  <input type="text" name="text7" size="5" tabindex="3" value="3">
+  <input type="text" name="text8" size="5" tabindex="6" value="6">
+  <input type="text" name="text9" size="5" tabindex="9" value="9">
+  <input type="text" name="text3" size="5" tabindex="12" value="7">
+  <br>
+  <input type="submit" value="enviar" tabindex="10">
+</form>
+</body>
+</html>

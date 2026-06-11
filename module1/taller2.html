@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="registrardatos.php" method="post">
+        <fieldset>
+            <legend>Form1</legend>
+            Seleccione la sección donde desea ingresar:
+            <br>
+            <input type="radio" name="seccion" value="1" disabled>Niños<br>
+            <input type="radio" name="seccion" value="2">Adolescentes<br>
+            <input type="radio" name="seccion" value="3">Mayores<br>
+            <input type="submit" value="Enviar">
+        </fieldset>
+
+    </form>
+
+    <form action="registrardatos.php" method="post">
+        <fieldset>
+            <legend>Form2</legend>
+            Ingrese su nombre:
+            <input type="text" name="nombre" maxlength="10" size="20">
+            maximo 10 caracteres
+            <br>
+            Ingrese su clave:
+            <input type="password" name="clave" maxlength="10" size="12">
+            maximo 10 caracteres
+            <br>
+            <input type="submit" value="enviar">
+        </fieldset>
+    </form>
+    <form action="registrardatos.php" method="post">
+        <fieldset>
+            <legend>form3</legend>
+            Ingrese su nombre:
+            <input type="text" name="nombre" size="30" value="Interpolacion" readonly><br>
+            Contrato:<br>
+            <textarea name="comentarios" rows="5" cols="60" readonly>
+                Por la presente ..............................
+            </textarea>
+            <br>
+            <input type="submit" value="Enviar">
+        </fieldset>
+    </form>
+    <form action="mailto:luisparrachuquimia@gmail.com" method="post" enctype="text/plain">
+        <fieldset>
+            <legend>Form4</legend>
+            <h2>ingrese su nombre: </h2>
+            <input type="text" name="nombre" size="30"><br>
+            <h2>ingrese su direccion: </h2>
+            <input type="text" name="direccion" size="30"><br>
+            <input type="submit" value="Enviar correo">
+            <input type="file">
+        </fieldset>
+    </form>
+
+    <form action="mailto:reclamos@gmail.com" method="post" enctype="text/plain" target="_blank">
+        Ingrese su nombre:
+        <input type="text" name="nombre" size="20">
+        <br>
+        Ingrese su dirección:
+        <input type="text" name="dirección" size="30">
+        <br>
+        Informe del problema:
+        <br>
+        <textarea rows="5" cols="40" name="problema"></textarea>
+        <br>
+        <input type="submit" value="enviar" >
+    </form>
+</body>
+
+</html>
