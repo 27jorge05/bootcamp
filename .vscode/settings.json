@@ -1,0 +1,11 @@
+{
+    "vscode-pets.petSize": "medium",
+    "vscode-pets.petColor": "red",
+    "vscode-pets.position": "explorer",
+    "vscode-pets.throwBallWithMouse": true,
+    "vscode-pets.disableEffects": false,
+    "vscode-pets.petType": "panda",
+    "vscode-pets.theme": "winter",
+    "pomodoro.workTime": 30,
+    "pomodoro.pauseTime": 8
+}
