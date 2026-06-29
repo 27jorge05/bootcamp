@@ -18,17 +18,24 @@ function dibujar() {
   var lienzo=retornarLienzo("lienzo1");
   if (lienzo) {
     lienzo.fillStyle="rgb(255,0,0)";
-    lienzo.fillRect(0,0,300,300);
-    lienzo.clearRect(10,10,30,30);
-    lienzo.clearRect(135,135,30,30);
-    lienzo.clearRect(260,260,30,30);
+    lienzo.strokeStyle="rgb(0,0,255)";
+    lienzo.lineWidth=5;
+    lienzo.beginPath();
+    lienzo.moveTo(150,10);
+    lienzo.lineTo(10,290);
+    lienzo.lineTo(290,290);
+    lienzo.lineTo(430,10);
+    lienzo.lineTo(150,10);
+    lienzo.fill();
+    lienzo.stroke();    
   }
 }
+
 </script>
 
 </head>
 <body onLoad="dibujar()">
-<canvas id="lienzo1" width="300" height="300">
+<canvas id="lienzo1" width="500" height="300">
 Su navegador no permite utilizar canvas.
 </canvas>
 </body>

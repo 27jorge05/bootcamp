@@ -27,9 +27,9 @@
                 lienzo1.moveTo(0, 25);
                 lienzo1.lineTo(50, 25);
                 lienzo1.stroke();
+                lienzo1.lineWidth = 3;
                 lienzo1.strokeStyle = "rgb(200,100,200)";
 
-                lienzo1.lineWidth = 3;
                 lienzo1.beginPath();
                 lienzo1.moveTo(0, 0);
                 lienzo1.lineTo(50, 50);
@@ -46,6 +46,17 @@
                 lienzo1.moveTo(0, 50);
                 lienzo1.lineTo(50, 0);
                 lienzo1.stroke();
+
+
+                lienzo1.beginPath();
+                lienzo1.lineWidth = 4;
+                lienzo1.strokeStyle= 'rgb(200,50,30)';
+                lienzo1.moveTo(10,10);
+                lienzo1.lineTo(25,40);
+                lienzo1.lineTo(40,10);
+                lienzo1.lineTo(10,10);
+                lienzo1.stroke();
+
                 var lienzo2 = retornarLienzo("lienzo2");
 
                 if (lienzo2) {
