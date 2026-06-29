@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Título de la página</title>
+    <meta charset="UTF-8">
+
+    <script type="text/javascript">
+        function retornarLienzo(x) {
+            var canvas = document.getElementById(x);
+            if (canvas.getContext) {
+                var lienzo = canvas.getContext("2d");
+                return lienzo;
+            } else
+                return false;
+        }
+
+        function dibujar() {
+            var lienzo1 = retornarLienzo("lienzo1");
+            if (lienzo1) {
+                lienzo1.strokeStyle = "rgb(255,0,255)";
+                lienzo1.beginPath();
+                lienzo1.moveTo(25, 0);
+                lienzo1.lineTo(25, 50);
+                lienzo1.stroke();
+                lienzo1.beginPath();
+                lienzo1.moveTo(0, 25);
+                lienzo1.lineTo(50, 25);
+                lienzo1.stroke();
+                lienzo1.strokeStyle = "rgb(200,100,200)";
+
+                lienzo1.lineWidth = 3;
+                lienzo1.beginPath();
+                lienzo1.moveTo(0, 0);
+                lienzo1.lineTo(50, 50);
+                lienzo1.stroke();
+
+                lienzo1.lineWidth = 6;
+                lienzo1.beginPath();
+                lienzo1.moveTo(50, 50);
+                lienzo1.lineTo(0, 50);
+                lienzo1.stroke();
+
+                lienzo1.beginPath();
+                lienzo1.lineWidth = 3;
+                lienzo1.moveTo(0, 50);
+                lienzo1.lineTo(50, 0);
+                lienzo1.stroke();
+                var lienzo2 = retornarLienzo("lienzo2");
+
+                if (lienzo2) {
+                    var patron = lienzo2.createPattern(lienzo1.canvas, 'repeat');
+                    lienzo2.fillStyle = patron;
+                    lienzo2.fillRect(0, 0, 300, 300);
+                }
+            }
+        }
+
+    </script>
+
+</head>
+
+<body onLoad="dibujar()">
+    <canvas id="lienzo1" width="50" height="50"><br>
+        Su navegador no permite utilizar canvas.
+    </canvas>
+    <br>
+    <br>
+    <br>
+    <canvas id="lienzo2" width="300" height="300"><br>
+        Su navegador no permite utilizar canvas.
+    </canvas>
+
+</body>
+
+</html>

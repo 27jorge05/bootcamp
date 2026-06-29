@@ -7,5 +7,6 @@
     "vscode-pets.petType": "panda",
     "vscode-pets.theme": "winter",
     "pomodoro.workTime": 30,
-    "pomodoro.pauseTime": 8
+    "pomodoro.pauseTime": 8,
+    "liveServer.settings.port": 5501
 }
