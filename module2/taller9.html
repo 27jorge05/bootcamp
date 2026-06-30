@@ -23,9 +23,9 @@
                 lienzo.strokeStyle = "rgb(255,0,0)";
                 lienzo.beginPath();
                 lienzo.moveTo(0, 150);
-                lienzo.quadraticCurveTo(150, fila, 300, 150);
+                lienzo.quadraticCurveTo(111+0.7*fila, fila, 300, 150);
                 lienzo.stroke();
-                fila++;
+                fila+=2;
                 if (fila > 300)
                     fila = 0;
             }
