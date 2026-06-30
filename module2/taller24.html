@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Título de la página</title>
+    <meta charset="UTF-8">
+
+    <script>
+
+        window.addEventListener('load', inicio, false);
+
+        function inicio() {
+            document.getElementById('guardar').addEventListener('click', guardar, false);
+            document.getElementById('traducir').addEventListener('click', recuperar, false);
+        }
+
+        function guardar(evt) {
+            console.log("tecla: ",evt);
+            localStorage.setItem(document.getElementById('ingles').value, document.getElementById('castellano').value);
+            document.getElementById('ingles').value = '';
+            document.getElementById('castellano').value = '';
+        }
+
+        function recuperar(evt) {
+            if (localStorage.getItem(document.getElementById('ingles').value) == null)
+                alert('No está almacenala la palabra ' + document.getElementById('ingles').value);
+            else
+                document.getElementById('castellano').value = localStorage.getItem(document.getElementById('ingles').value);
+        }
+
+    </script>
+
+</head>
+
+<body>
+    Palabra en ingles:
+    <input type="text" id="ingles">
+    <input type="button" id="traducir" value="Traducir">
+    <br>
+    Palabra en castellano:
+    <input type="text" id="castellano">
+    <br>
+    <input type="button" id="guardar" value="Guardar">
+</body>
+
+</html>
