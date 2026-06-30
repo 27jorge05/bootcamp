@@ -18,31 +18,27 @@
         function dibujar() {
             var lienzo = retornarLienzo("lienzo1");
             if (lienzo) {
+                
+                lienzo.beginPath();
+                lienzo.lineWidth = 3;
+                lienzo.moveTo(100, 50);
+                lienzo.lineTo(200, 250);
+                lienzo.stroke();
+
+                lienzo.beginPath();
+                lienzo.lineWidth = 3;
+                lienzo.moveTo(0, 150);
+                lienzo.lineTo(290, 150);
+                lienzo.stroke();
+                
                 lienzo.strokeStyle = "rgb(255,0,0)";
                 lienzo.beginPath();
-                lienzo.arc(100, 100, 50, 0, Math.PI, true);
+                lienzo.moveTo(0, 150);
+                lienzo.bezierCurveTo(100, 50, 200, 250, 290, 150);
                 lienzo.stroke();
 
-                lienzo.strokeStyle = "rgb(0,255,0)";
-                lienzo.beginPath();
-                lienzo.arc(100, 200, 50, 0, Math.PI, false);
-                lienzo.stroke();
-
-                lienzo.fillStyle = "rgb(0,0,288)";
-                lienzo.strokeStyle = "rgb(20,150,130)";
-                lienzo.beginPath();
-                lienzo.arc(200, 100, 50, 0, Math.PI, true);
-                lienzo.fill();
-                lienzo.stroke();
                 
                 
-                lienzo.fillStyle = "rgb(255,255,0)";
-                lienzo.strokeStyle = "rgb(90,170,180)";
-                lienzo.beginPath();
-                lienzo.arc(200, 200, 50, 0, Math.PI * 2, true);
-                lienzo.fill();
-                lienzo.stroke();
-
             }
         }
 
