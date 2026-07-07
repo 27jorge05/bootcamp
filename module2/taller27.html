@@ -1,32 +1,44 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-  <title>Título de la página</title>  
-  <meta charset="UTF-8">
-  
-<script type="text/javascript">
+    <title>Título de la página</title>
+    <meta charset="UTF-8">
 
-    window.addEventListener('load', inicio, false);
+    <script type="text/javascript">
 
-    function inicio() {
-        if (navigator.geolocation) {
-            navigator.geolocation.watchPosition(mostrarCoordenada);
-        } else {
-          alert('El navegador no dispone la capacidad de geolocalización');
+        window.addEventListener('load', inicio, false);
+
+        function inicio() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(mostrarCoordenada);
+            } else {
+                alert('El navegador no dispone la capacidad de geolocalización');
+            }
         }
-    }
-  
-    function mostrarCoordenada(posicion) {
-        document.getElementById('dato').innerHTML='Latitud:'+
-           posicion.coords.latitude+
-           '<br> Longitud:'+posicion.coords.longitude+
-           '<br>Exactitud:'+posicion.coords.accuracy;
-    }
-       
-</script>  
-  
+
+        function mostrarCoordenada(posicion) {
+            document.getElementById('dato').innerHTML = 'Latitud:' +
+                posicion.coords.latitude +
+                '<br> Longitud:' + posicion.coords.longitude +
+                '<br>Exactitud:' + posicion.coords.accuracy;
+            var direccion = posicion.coords.latitude + "," + posicion.coords.longitude;
+            var mapa = "https://www.google.com/maps?q="
+                + direccion
+                + "&output=embed";
+            document.getElementById("map").src = mapa
+        }
+        
+
+    </script>
+
 </head>
+
 <body>
-  <span id="dato"></span>
+    <span id="dato"></span>
+    <iframe id="map" width="600" height="600">
+
+    </iframe>
 </body>
+
 </html>

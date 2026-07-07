@@ -81,11 +81,9 @@ function calculateExpression(value) {
 }
 
 keysElement.addEventListener("click", (event) => {
-  const button = event.target.closest("button");
+  const button = event.target.closest("button");//joya
 
-  if (!button) {
-    return;
-  }
+ 
 
   const value = button.dataset.value;
   const action = button.dataset.action;
