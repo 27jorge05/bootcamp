@@ -5,5 +5,7 @@ esta divido por modulos
 <!-- auto-generated -->
 - [module1](./module1/README.md)
 - [module2](./module2/README.md)
+- [module3](./module3/README.md)
+- [projects](./projects/README.md)
 <!-- end-auto-generated -->
 
