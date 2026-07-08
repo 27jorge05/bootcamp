@@ -5,7 +5,9 @@ const resultElement = document.getElementById('result');
 const keysElement = document.querySelector('.keys');
 const historyElement = document.querySelector('.history');
 
-let history = JSON.parse(localStorage.getItem('history')) || [];
+document.addEventListener('onload', () => {
+    history = JSON.parse(localStorage.getItem('history')) || [];
+});
 let expression = '';
 let justCalculated = false;
 
