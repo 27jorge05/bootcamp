@@ -1,12 +1,13 @@
+
 const operatorScreen = document.getElementById('operation');
 const operationElement = document.getElementById('operation');
 const resultElement = document.getElementById('result');
 const keysElement = document.querySelector('.keys');
 const historyElement = document.querySelector('.history');
 
+let history = JSON.parse(localStorage.getItem('history')) || [];
 let expression = '';
 let justCalculated = false;
-const history = [];
 
 const operators = ['+', '-', '*', '/'];
 
@@ -89,6 +90,7 @@ function applyPercent() {
     if (isValidExpression(expression)) {
         expression = (eval(expression) / 100).toString();
         showExpression();
+        showResult(expression);
     }
 }
 function calculate() {
@@ -138,6 +140,7 @@ function showHistory() {
 function saveToHistory(expression, result) {
     history.push({ expression, result });
     // console.log(`History: ${JSON.stringify(history)}`);
+    localStorage.setItem('history', JSON.stringify(history));
     showHistory();
 }
 
