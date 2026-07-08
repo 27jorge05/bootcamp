@@ -1,8 +1,12 @@
+const operatorScreen = document.getElementById('operation');
 const operationElement = document.getElementById('operation');
 const resultElement = document.getElementById('result');
 const keysElement = document.querySelector('.keys');
+const historyElement = document.querySelector('.history');
 
 let expression = '';
+let justCalculated = false;
+const history = [];
 
 const operators = ['+', '-', '*', '/'];
 
@@ -17,7 +21,7 @@ function isValidExpression(expression) {
 }
 
 // wrongs
-function  redScreen () {
+function redScreen() {
     const screen = document.querySelector('.screen');
     screen.classList.add('invalid');
 
@@ -28,7 +32,7 @@ function  redScreen () {
 }
 // screen
 function formatForScreen(value) {
-    return value
+    return String(value)
         .replaceAll('*', '×')
         .replaceAll('/', '÷')
         .replaceAll('-', '−');
@@ -53,7 +57,12 @@ function currentNumberHasDecimal() {
 }
 function addValue(value) {
     const lastCharacter = expression.at(-1);
-
+    const isNumber = /[0-9]/.test(value);
+    if (justCalculated && isNumber) {
+        expression = '';
+        showResult(expression);
+    }
+    justCalculated = false;
     if ((value === '.' && currentNumberHasDecimal()) ||
         (operators.includes(value) && expression === '') ||
         (operators.includes(value) && operators.includes(lastCharacter))) {
@@ -67,7 +76,9 @@ function addValue(value) {
 // operators
 function clearCalculator() {
     expression = '';
+    showResult(expression);
     showExpression();
+
 }
 function deleteLastCharacter() {
     expression = expression.slice(0, -1);
@@ -75,19 +86,64 @@ function deleteLastCharacter() {
 }
 function applyPercent() {
 
-    if (isValidExpression(expression) ) {
+    if (isValidExpression(expression)) {
         expression = (eval(expression) / 100).toString();
         showExpression();
     }
 }
 function calculate() {
-    if (isValidExpression(expression)) {
-        expression = eval(expression).toString();
-        showResult(expression);
+    if (!isValidExpression(expression)) {
+        redScreen();
+        return;
     }
+    let oldexpression = expression;
+    const result = eval(expression);
+    expression = result.toString();
+
+    console.log(`Old expression: ${oldexpression}, Result: ${result}`);
+    saveToHistory(oldexpression, expression);
+
+    showResult(expression);
+    justCalculated = true;
 }
 
 
+
+// history
+function showHistory() {
+    historyElement.innerHTML = '';
+
+    history.forEach((item) => {
+        const historyItem = document.createElement('div');
+        const historyExpression = document.createElement('span');
+        const historyResult = document.createElement('span');
+
+        historyItem.classList.add('historyElement');
+        historyExpression.classList.add('historyExpression');
+        historyResult.classList.add('historyResult');
+
+        historyExpression.textContent = formatForScreen(item.expression);
+        historyResult.textContent = ` = ${formatForScreen(item.result)}`;
+
+        historyExpression.dataset.value = item.expression;
+        historyResult.dataset.value = item.result;
+
+        historyItem.appendChild(historyExpression);
+        historyItem.appendChild(historyResult);
+        historyElement.appendChild(historyItem);
+    });
+
+}
+
+function saveToHistory(expression, result) {
+    history.push({ expression, result });
+    // console.log(`History: ${JSON.stringify(history)}`);
+    showHistory();
+}
+
+
+
+// listeners
 keysElement.addEventListener('click', (event) => {
     console.log(`Event target: ${event.target.tagName}`);
     const button = event.target.closest('button');
@@ -112,4 +168,30 @@ keysElement.addEventListener('click', (event) => {
         calculate();
     }
 
+});
+
+operatorScreen.addEventListener('click', (event) => {
+    // alert('Operator screen clicked');
+
+    historyElement.classList.toggle('hidden');
+});
+
+historyElement.addEventListener('click', (event) => {
+    const historyExpression = event.target.closest('.historyExpression');
+    const historyResult = event.target.closest('.historyResult');
+
+    justCalculated = false;
+    if (historyExpression) {
+        expression = historyExpression.dataset.value;
+        showExpression();
+        showResult("");
+
+        return;
+    }
+    if (historyResult) {
+        expression = historyResult.dataset.value;
+        showExpression();
+        showResult(expression);
+        return;
+    }
 });
