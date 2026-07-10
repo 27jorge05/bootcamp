@@ -1,29 +1,34 @@
 
 const operatorScreen = document.getElementById('operation');
-const operationElement = document.getElementById('operation');
 const resultElement = document.getElementById('result');
 const keysElement = document.querySelector('.keys');
 const historyElement = document.querySelector('.history');
 
-document.addEventListener('onload', () => {
-    history = JSON.parse(localStorage.getItem('history')) || [];
-});
+let history = JSON.parse(localStorage.getItem('history')) || [];
 let expression = '';
 let justCalculated = false;
+showHistory();
 
 const operators = ['+', '-', '*', '/'];
 
-// auxiliars functions 
+
+
+function isNumber(value) {
+    return /[0-9]/.test(value);
+}
+function isOperator(value) {
+    return operators.includes(value);
+}
 
 function isValidExpression(expression) {
-    const hasNumber = /[0-9]/.test(expression)
+    const hasNumber = isNumber(expression);
     const hasConsecutiveOperators = /[+\-*/]{2,}/.test(expression)
-    const hasOperatorAtEnd = operators.includes(expression.at(-1))
+    const hasOperatorAtEnd = isOperator(expression.at(-1))
     const hasconsecutiveDots = /\.{2,}/.test(expression)
     return hasNumber && !hasConsecutiveOperators && !hasOperatorAtEnd && !hasconsecutiveDots;
 }
 
-// wrongs
+
 function redScreen() {
     const screen = document.querySelector('.screen');
     screen.classList.add('invalid');
@@ -33,7 +38,7 @@ function redScreen() {
     }, 180);
 
 }
-// screen
+
 function formatForScreen(value) {
     return String(value)
         .replaceAll('*', '×')
@@ -43,8 +48,8 @@ function formatForScreen(value) {
 }
 
 function showExpression() {
-    console.log(`Expression: ${expression}`);
-    operationElement.textContent = formatForScreen(expression);
+    
+    operatorScreen.textContent = formatForScreen(expression);
 }
 function showResult(expression) {
     if (expression === '') {
@@ -60,15 +65,14 @@ function currentNumberHasDecimal() {
 }
 function addValue(value) {
     const lastCharacter = expression.at(-1);
-    const isNumber = /[0-9]/.test(value);
-    if (justCalculated && isNumber) {
+    if (justCalculated && isNumber(value)) {
         expression = '';
         showResult(expression);
     }
     justCalculated = false;
     if ((value === '.' && currentNumberHasDecimal()) ||
         (operators.includes(value) && expression === '') ||
-        (operators.includes(value) && operators.includes(lastCharacter))) {
+        (operators.includes(value) && isOperator(lastCharacter))) {
         redScreen();
         return;
     }
@@ -76,7 +80,7 @@ function addValue(value) {
     showExpression();
 }
 
-// operators
+
 function clearCalculator() {
     expression = '';
     showResult(expression);
@@ -100,11 +104,11 @@ function calculate() {
         redScreen();
         return;
     }
-    let oldexpression = expression;
+    const oldexpression = expression;
     const result = eval(expression);
     expression = result.toString();
 
-    console.log(`Old expression: ${oldexpression}, Result: ${result}`);
+    
     saveToHistory(oldexpression, expression);
 
     showResult(expression);
@@ -113,7 +117,7 @@ function calculate() {
 
 
 
-// history
+
 function showHistory() {
     historyElement.innerHTML = '';
 
@@ -141,23 +145,23 @@ function showHistory() {
 
 function saveToHistory(expression, result) {
     history.push({ expression, result });
-    // console.log(`History: ${JSON.stringify(history)}`);
+    
     localStorage.setItem('history', JSON.stringify(history));
     showHistory();
 }
 
 
 
-// listeners
+
 keysElement.addEventListener('click', (event) => {
-    console.log(`Event target: ${event.target.tagName}`);
+    
     const button = event.target.closest('button');
     const value = button.dataset.value;
     const action = button.dataset.action;
-    console.log(`Value: ${value}, Action: ${action}`);
+    
     if (value) {
         addValue(value);
-        console.log(`Value added: ${value}`);
+        
         return;
     }
     if (action === 'clear') {
@@ -176,7 +180,7 @@ keysElement.addEventListener('click', (event) => {
 });
 
 operatorScreen.addEventListener('click', (event) => {
-    // alert('Operator screen clicked');
+    
 
     historyElement.classList.toggle('hidden');
 });
