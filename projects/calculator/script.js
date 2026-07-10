@@ -3,6 +3,15 @@ const operatorScreen = document.getElementById('operation');
 const resultElement = document.getElementById('result');
 const keysElement = document.querySelector('.keys');
 const historyElement = document.querySelector('.history');
+const themeButton = document.getElementById('themeButton');
+const savedTheme = localStorage.getItem('theme');
+const clearHistoryButton = document.getElementById('clearHistory');
+if (savedTheme === 'dark') {
+    document.body.classList.add('dark');
+    themeButton.textContent = '☀️';
+}
+
+
 
 let history = JSON.parse(localStorage.getItem('history')) || [];
 let expression = '';
@@ -48,7 +57,7 @@ function formatForScreen(value) {
 }
 
 function showExpression() {
-    
+
     operatorScreen.textContent = formatForScreen(expression);
 }
 function showResult(expression) {
@@ -108,7 +117,7 @@ function calculate() {
     const result = eval(expression);
     expression = result.toString();
 
-    
+
     saveToHistory(oldexpression, expression);
 
     showResult(expression);
@@ -118,50 +127,65 @@ function calculate() {
 
 
 
+
 function showHistory() {
-    historyElement.innerHTML = '';
 
-    history.forEach((item) => {
-        const historyItem = document.createElement('div');
-        const historyExpression = document.createElement('span');
-        const historyResult = document.createElement('span');
+    const fragment = document.createDocumentFragment();
 
-        historyItem.classList.add('historyElement');
-        historyExpression.classList.add('historyExpression');
-        historyResult.classList.add('historyResult');
+    history.forEach((element) => {
+        fragment.appendChild(createHistoryElement(element));
 
-        historyExpression.textContent = formatForScreen(item.expression);
-        historyResult.textContent = ` = ${formatForScreen(item.result)}`;
-
-        historyExpression.dataset.value = item.expression;
-        historyResult.dataset.value = item.result;
-
-        historyItem.appendChild(historyExpression);
-        historyItem.appendChild(historyResult);
-        historyElement.appendChild(historyItem);
     });
+
+    historyElement.replaceChildren(fragment);
+
+}
+function createHistoryElement(item) {
+
+
+    const historyItem = document.createElement('div');
+    const historyExpression = document.createElement('span');
+    const historyResult = document.createElement('span');
+
+    historyItem.classList.add('historyElement');
+    historyExpression.classList.add('historyExpression');
+    historyResult.classList.add('historyResult');
+
+    historyExpression.textContent = formatForScreen(item.expression);
+    historyResult.textContent = ` = ${formatForScreen(item.result)}`;
+
+    historyExpression.dataset.value = item.expression;
+    historyResult.dataset.value = item.result;
+
+    historyItem.append(historyExpression, historyResult);
+
+    return historyItem;
+
 
 }
 
 function saveToHistory(expression, result) {
-    history.push({ expression, result });
-    
+    const historyItem = { expression, result };
+
+    history.push(historyItem);
+
     localStorage.setItem('history', JSON.stringify(history));
-    showHistory();
+    
+    historyElement.appendChild(createHistoryElement(historyItem));
 }
 
 
 
 
 keysElement.addEventListener('click', (event) => {
-    
+
     const button = event.target.closest('button');
     const value = button.dataset.value;
     const action = button.dataset.action;
-    
+
     if (value) {
         addValue(value);
-        
+
         return;
     }
     if (action === 'clear') {
@@ -180,7 +204,7 @@ keysElement.addEventListener('click', (event) => {
 });
 
 operatorScreen.addEventListener('click', (event) => {
-    
+
 
     historyElement.classList.toggle('hidden');
 });
@@ -203,4 +227,17 @@ historyElement.addEventListener('click', (event) => {
         showResult(expression);
         return;
     }
+});
+themeButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+
+    const isDark = document.body.classList.contains('dark');
+    themeButton.textContent = isDark ? '☀️' : '🌙'
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+clearHistoryButton.addEventListener('click', () => {
+    history = [];
+    localStorage.removeItem('history');
+    historyElement.replaceChildren();
 });
