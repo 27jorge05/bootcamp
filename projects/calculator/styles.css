@@ -69,17 +69,17 @@ body {
 
 .page {
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 12px;
+    padding: clamp(8px, 3vw, 24px);
 
 }
 
 .calculator1 {
     width: min(100%, 300px);
-    height: min(80%, 500px);
-    padding: 15px;
+    padding: clamp(12px,  4vw, 20px);
     border-radius: 15px;
     background-color: var(--calculator-background);
     color: var(--calculator-text);
@@ -162,14 +162,14 @@ body {
 .keys {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: clamp(8px, 2.5vw,12px);
 }
 
 .key {
-    min-height: 60px;
+    min-height: clamp(48px, 16vw, 72px);
     border: 1px solid var(--key-border);
     border-radius: 8px;
-    font-size: 2rem;
+    font-size: clamp(1.35rem, 7vw, 2rem);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--key-background);
     color: var(--key-text);
@@ -293,10 +293,12 @@ body {
 @media (max-width: 420px) {
     .page {
         padding: 12px;
+        align-items: flex-start;
     }
 
     .calculator1 {
         padding: 14px;
+        border-radius: 12px;
 
     }
 
