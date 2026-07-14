@@ -170,7 +170,7 @@ function saveToHistory(expression, result) {
     history.push(historyItem);
 
     localStorage.setItem('history', JSON.stringify(history));
-    
+
     historyElement.appendChild(createHistoryElement(historyItem));
 }
 
@@ -188,17 +188,20 @@ keysElement.addEventListener('click', (event) => {
 
         return;
     }
-    if (action === 'clear') {
-        clearCalculator();
-    }
-    if (action === 'delete') {
-        deleteLastCharacter();
-    }
-    if (action === 'percent') {
-        applyPercent();
-    }
-    if (action === 'equals') {
-        calculate();
+
+    switch (action) {
+        case 'clear':
+            clearCalculator();
+            break;
+        case 'delete':
+            deleteLastCharacter();
+            break;
+        case 'percent':
+            applyPercent();
+            break;
+        case 'equals':
+            calculate();
+            break;
     }
 
 });
